@@ -8,7 +8,7 @@ from flask import redirect
 import os
 
 app = Flask(__name__)
-
+app.config['MAX_CONTENT_LENGTH']
 
 @app.route('/')
 def hello_world():  # put application's code here
