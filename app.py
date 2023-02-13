@@ -108,6 +108,15 @@ def logout():
     session.pop('username',None)
     return redirect(url_for('index'))
 
+@app.route('/hostinfo', methods=["POST", "GET"])
+def hostinfo():
+    if request.method == "POST":
+        host = request.form.get('host')
+        return render_template('hostinfo.html', host=host)
+
+@app.route('/insert_host')
+def insert_host():
+    return render_template('insert_host.html')
 
 @app.route('/upload', methods=["POST", "GET"])
 def upload():
