@@ -137,6 +137,11 @@ def upload():
 def dicts():
     hosts = {'ip': '192.168.31.100', 'hostname': 'master01', 'username': 'root', 'cpu': 'Intel-i9-13900k'}
     return render_template('hosts.html', zhujixinxi=hosts)
+
+
+@app.route('/staticfile')
+def static_file():
+    return render_template('staticfile.html')
 if __name__ == '__main__':
     app.run()
 
