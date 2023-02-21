@@ -81,6 +81,8 @@ def del_cookies():
 
 
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+
+
 @app.route('/index')
 def index():
     if 'username' in session:
@@ -92,6 +94,8 @@ def index():
      <p><h1>你未登陆</h1>
      <p><h1><a href="/login">点击这里登陆</a></h1>
     '''
+
+
 @app.route('/login', methods=["GET","POST"])
 def login():
     if request.method == "POST":
@@ -103,16 +107,20 @@ def login():
       <p><input type=submit value=Login>
     </ from>
     '''
+
+
 @app.route('/logout')
 def logout():
     session.pop('username',None)
     return redirect(url_for('index'))
+
 
 @app.route('/hostinfo', methods=["POST", "GET"])
 def hostinfo():
     if request.method == "POST":
         host = request.form.get('host')
         return render_template('hostinfo.html', host=host)
+
 
 @app.route('/insert_host')
 def insert_host():
@@ -124,6 +132,11 @@ def upload():
         file = request.files['file']
         file.save(os.path.join('static', file.filename))
     return render_template('upload.html')
+
+@app.route('/dict', methods=["POST","GET"])
+def dicts():
+    hosts = {'ip': '192.168.31.100', 'hostname': 'master01', 'username': 'root', 'cpu': 'Intel-i9-13900k'}
+    return render_template('hosts.html', zhujixinxi=hosts)
 if __name__ == '__main__':
     app.run()
 
