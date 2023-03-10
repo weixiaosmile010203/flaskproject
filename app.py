@@ -53,7 +53,7 @@ def student():
     return render_template('student.html')
 
 
-@app.route('/result',methods = ['POST', 'GET'])
+@app.route('/result', methods=['POST', 'GET'])
 def result():
     if request.method == "POST":
         result = request.form
